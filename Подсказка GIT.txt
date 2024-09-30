@@ -44,6 +44,11 @@ git commit -m "ќставили нужное"
 
 git log --oneline --graph -6 (провер€ем все ли получилось)
 
+git checkout master- переход в главный ствол
+git checkout lesson_1 прыгвем в ветку Lesson_1
+git checkout -b Lesson_2
+
+
 ќткатить изменени€, а так же восстановить файл, если удален: 
 git checkout им€файла
 
@@ -67,6 +72,7 @@ git checkout task# переходим на бранч task#
 
 показать путь к проекту на гитхабе
  git remote add motocycle git@github.com:Ingemar86/ing-mishka.git
+git remote add QA https://github.com/Ingemar86/QA.git
 переход в бранч мастера
 git checkout master
 перейти в branch1
