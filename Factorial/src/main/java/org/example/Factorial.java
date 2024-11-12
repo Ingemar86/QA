@@ -1,7 +1,7 @@
 // Factorial.java
 import java.util.Scanner;
 
-public class 6 {
+public class Factorial {
     // Метод для вычисления факториала с помощью рекурсии
     public static long factorial(int n) {
         if (n == 0) {
