@@ -1,7 +1,7 @@
 // Factorial.java
 import java.util.Scanner;
 
-public class Factorial {
+public class 6 {
     // Метод для вычисления факториала с помощью рекурсии
     public static long factorial(int n) {
         if (n == 0) {
@@ -18,7 +18,7 @@ public class Factorial {
         System.out.print("Введите число для вычисления факториала: ");
         int num = scanner.nextInt();
 
-        // Проверка на числас минусовым знаком
+        // Проверка на числа с минусовым знаком
         if (num < 0) {
             System.out.println("Факториал не существует для отрицательных чисел.");
         } else {
