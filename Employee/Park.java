@@ -49,18 +49,4 @@ public class Park {
         }
     }
 
-    // Основной класс программы
-    public static void main(String[] args) {
-        Park park = new Park(5); // Создаем парк для 5 аттракционов
-
-        // Добавляем аттракционы
-        park.addAttraction("Ролики", "10 AM - 10 PM", 5.50);
-        park.addAttraction("Колесо обозрения", "9 AM - 11 PM", 3.00);
-        park.addAttraction("Дом смехаe", "11 AM - 9 PM", 7.00);
-        park.addAttraction("Гонки", "10 AM - 8 PM", 4.00);
-        park.addAttraction("Лодочки", "9 AM - 10 PM", 2.50);
-
-        // Выводим информацию о всех аттракционах
-        park.displayAttractions();
-    }
 }
