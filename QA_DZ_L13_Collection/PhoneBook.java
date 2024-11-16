@@ -1,41 +1,32 @@
-import java.util.*;
-
 public class PhoneBook {
-    // Словарь для хранения фамилий и соответствующих им списков телефонов
-    private Map<String, List<String>> phoneBook;
 
-    // Конструктор, инициализирующий словарь
+    // Хранение телефонных номеров и фамилий владельцев
+    private Map<String, String> phoneBook;
+
+    // Конструктор
     public PhoneBook() {
         phoneBook = new HashMap<>();
     }
 
-    // Метод для добавления записи в телефонную книгу
-    public void add(String lastName, String phoneNumber) {
-        // Если фамилия уже есть в телефонной книге, добавляем новый номер
-        if (phoneBook.containsKey(lastName)) {
-            phoneBook.get(lastName).add(phoneNumber);
+    // Метод для добавления записи
+    public boolean add(String surname, String phoneNumber) {
+        // Проверяем, не занят ли этот номер уже
+        if (phoneBook.containsKey(phoneNumber)) {
+            System.out.println("Этот номер уже зарегистрирован у другого человека.");
+            return false;  // Номер уже есть в справочнике
         } else {
-            // Если фамилия новая, создаем список и добавляем первый номер
-            List<String> phoneNumbers = new ArrayList<>();
-            phoneNumbers.add(phoneNumber);
-            phoneBook.put(lastName, phoneNumbers);
+            phoneBook.put(phoneNumber, surname);
+            return true;  // Успешно добавили
         }
     }
 
-    // Метод для получения всех номеров по фамилии
-    public List<String> get(String lastName) {
-        // Возвращаем список номеров для данной фамилии, если она существует
-        return phoneBook.getOrDefault(lastName, Collections.emptyList());
-    }
-
-    // Метод для вывода всех записей в телефонной книге
-    public void printAllEntries() {
-        for (Map.Entry<String, List<String>> entry : phoneBook.entrySet()) {
-            System.out.println("Фамилия: " + entry.getKey() + ", Телефоны: " + entry.getValue());
-        }
+    // Метод для получения фамилии по номеру телефона
+    public String get(String phoneNumber) {
+        return phoneBook.getOrDefault(phoneNumber, "Номер не найден");
     }
 
     public static void main(String[] args) {
+        // Создаем объект справочника
         PhoneBook phoneBook = new PhoneBook();
 
         // Добавление записей
@@ -52,7 +43,7 @@ public class PhoneBook {
         System.out.println("Телефоны Курочкина (не существует): " + phoneBook.get("Курочкин"));
 
         // Вывод всех записей
-        System.out.println("\nВсе записи в телефонной книге:");
+        System.out.println("Все записи в телефонной книге:");
         phoneBook.printAllEntries();
     }
 }
