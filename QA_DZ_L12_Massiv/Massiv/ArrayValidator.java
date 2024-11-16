@@ -1,84 +1,56 @@
-// Определяем пользовательское исключение MyAggragDataException, расширяющее класс Exception
-class MyAggragDataException extends Exception {
-    public MyAggragDataException(String message) {
-        super(message); // Передаем сообщение в родительский класс Exception
+// Исключение для ошибки размера массива
+class MyArraySizeException extends Exception {
+    public MyArraySizeException(String message) {
+        super(message);
     }
 }
 
-// Определяем пользовательское исключение MyAggragSizeException
-class MyAggragSizeException extends Exception {
-    public MyAggragSizeException(String message) {
-        super(message); // Передаем сообщение в родительский класс Exception
+// Исключение для ошибки данных
+class MyArrayDataException extends Exception {
+    public MyArrayDataException(String message) {
+        super(message);
     }
 }
 
-// Главный класс, в котором будут находиться методы валидации и суммирования
+// Класс для валидации и обработки массива
 public class ArrayValidator {
 
-    // Метод для валидации двумерного строкового массива
-    public static void validateArray(String[][] array) throws MyAggragSizeException {
+    // Приватный метод для проверки правильности размера массива
+    private static void validateArray(String[][] array) throws MyArraySizeException {
+        // Проверка, что массив имеет размер 4x4
         if (array.length != 4) {
-            throw new MyAggragSizeException("Количество строк должно быть 4"); // Проверяем количество строк
+            throw new MyArraySizeException("Неверный размер массива: количество строк должно быть 4.");
         }
 
-        for (String[] row : array) {
-            if (row.length != 4) {
-                throw new MyAggragSizeException("Количество столбцов должно быть 4"); // Проверяем количество столбцов
+        // Проверка, что каждая строка имеет 4 элемента
+        for (int i = 0; i < array.length; i++) {
+            if (array[i].length != 4) {
+                throw new MyArraySizeException("Неверный размер массива: каждая строка должна содержать 4 элемента.");
             }
         }
     }
 
-    // Метод для суммирования элементов массива после их преобразования в int
-    public static int sumArray(String[][] array) throws MyAggragDataException {
-        int sum = 0; // Переменная для хранения суммы
-        for (int i = 0; i < array.length; i++) { // Проходим по строкам
-            for (int j = 0; j < array[i].length; j++) { // Проходим по столбцам
+    // Метод для суммирования элементов массива с валидацией
+    public static void sumArray(String[][] array) throws MyArraySizeException, MyArrayDataException {
+        // Сначала проверяем размер массива
+        validateArray(array);
+
+        int totalSum = 0; // Переменная для хранения суммы
+
+        // Пробежимся по каждому элементу массива
+        for (int i = 0; i < array.length; i++) {
+            for (int j = 0; j < array[i].length; j++) {
                 try {
-                    // Пробуем преобразовать элемент массива в int
-                    sum += Integer.parseInt(array[i][j]);
+                    // Преобразуем строку в целое число
+                    totalSum += Integer.parseInt(array[i][j]);
                 } catch (NumberFormatException e) {
-                    // Если не удалось, выбрасываем исключение с детализацией
-                    throw new MyAggragDataException("Неверные данные в ячейке [" + i + "][" + j + "]: " + array[i][j]);
+                    // Если преобразование не удалось, выбрасываем исключение с деталями
+                    throw new MyArrayDataException("Ошибка преобразования в число в ячейке [" + i + "][" + j + "]: '" + array[i][j] + "' не является числом.");
                 }
             }
         }
-        return sum; // Возвращаем общую сумму
-    }
 
-    // Метод main для запуска программы
-    public static void main(String[] args) {
-        // Пример корректного массива 4x4
-        String[][] validArray = {
-                {"1", "2", "3", "4"},
-                {"5", "6", "7", "8"},
-                {"9", "10", "11", "12"},
-                {"13", "14", "15", "16"}
-        };
-
-        // Пример некорректного массива (нечисловое значение)
-        String[][] invalidArray = {
-                {"1", "2", "x", "4"},
-                {"5", "6", "7", "8"},
-                {"9", "10", "11", "12"},
-                {"13", "14", "15", "16"}
-        };
-
-        // Обработка корректного массива
-        try {
-            validateArray(validArray); // Проверка корректности массива
-            int totalSum = sumArray(validArray); // Суммирование элементов
-            System.out.println("Сумма элементов массива: " + totalSum); // Вывод суммы
-        } catch (MyAggragSizeException | MyAggragDataException e) {
-            System.out.println("Ошибка: " + e.getMessage()); // Вывод сообщения об ошибке
-        }
-
-        // Обработка некорректного массива
-        try {
-            validateArray(invalidArray); // Проверка корректности массива
-            int totalSum = sumArray(invalidArray); // Попытка суммирования элементов
-            System.out.println("Сумма элементов массива: " + totalSum); // Этот код не выполнится
-        } catch (MyAggragSizeException | MyAggragDataException e) {
-            System.out.println("Ошибка: " + e.getMessage()); // Вывод сообщения об ошибке
-        }
+        // Выводим сумму элементов массива
+        System.out.println("Сумма элементов массива: " + totalSum);
     }
 }
