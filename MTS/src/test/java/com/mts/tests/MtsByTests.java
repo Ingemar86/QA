@@ -1,4 +1,5 @@
-import io.github.bonigarcia.wdm.WebDriverManager;
+package com.mts.tests;
+
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -101,8 +102,8 @@ public class MtsByTests {
 
         // Заполнение полей
         driver.findElement(phoneInput).sendKeys("297777777");
-        driver.findElement(sumInput).sendKeys("30");
-        driver.findElement(emailInput).sendKeys("test@mail.ru");
+        driver.findElement(sumInput).sendKeys("70");
+        driver.findElement(emailInput).sendKeys("mail@mail.ru");
 
         // Прокрутка до кнопки и нажимаем Продолжить
         WebElement submitButtonElement = driver.findElement(submitButton);

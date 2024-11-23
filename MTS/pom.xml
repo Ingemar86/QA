@@ -12,7 +12,7 @@
     <dependency>
       <groupId>org.seleniumhq.selenium</groupId>
       <artifactId>selenium-java</artifactId>
-      <version>4.23.1</version>
+      <version>4.26.0</version>
     </dependency>
 
     <!-- WebDriverManager -->
@@ -21,7 +21,11 @@
       <artifactId>webdrivermanager</artifactId>
       <version>5.9.2</version>
     </dependency>
-
+    <dependency>
+      <groupId>io.github.bonigarcia</groupId>
+      <artifactId>webdrivermanager</artifactId>
+      <version>5.9.2</version>
+    </dependency>
     <!-- JUnit 5 -->
     <dependency>
       <groupId>org.junit.jupiter</groupId>
