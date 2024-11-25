@@ -1,0 +1,4 @@
+"DESCRIPTION","DURATION IN MS","NAME","PARENT SUITE","START TIME","STATUS","STOP TIME","SUB SUITE","SUITE","TEST CLASS","TEST METHOD"
+"","42340","testOnlinePaymentForm()","","Mon Nov 25 19:31:13 MSK 2024","passed","Mon Nov 25 19:31:56 MSK 2024","","com.mts.tests.MtsByTests","com.mts.tests.MtsByTests","testOnlinePaymentForm"
+"","23656","testPaymentSystemLogos()","","Mon Nov 25 19:30:33 MSK 2024","passed","Mon Nov 25 19:30:56 MSK 2024","","com.mts.tests.MtsByTests","com.mts.tests.MtsByTests","testPaymentSystemLogos"
+"","25667","testCheckBlockTitle()","","Mon Nov 25 19:29:50 MSK 2024","passed","Mon Nov 25 19:30:15 MSK 2024","","com.mts.tests.MtsByTests","com.mts.tests.MtsByTests","testCheckBlockTitle"
